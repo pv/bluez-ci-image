@@ -11,6 +11,7 @@ RUN apt-get update && \
 		bison \
 		build-essential \
 		ca-certificates \
+		ccache \
 		clang-tools \
 		cmake \
 		cppcheck \
