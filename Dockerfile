@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM ubuntu:26.04
 LABEL org.opencontainers.image.source="https://github.com/pv/bluez-ci-image"
 
 ENV DEBIAN_FRONTEND=noninteractive
@@ -22,6 +22,7 @@ RUN apt-get update && \
 		flex \
 		git \
 		git-core \
+		gitlint \
 		libasound2-dev \
 		libdbus-1-dev \
 		libdw-dev \
@@ -41,16 +42,20 @@ RUN apt-get update && \
 		libtool \
 		libudev-dev \
 		libxml2-dev \
-		locales \
 		openssl \
 		patch \
 		pkg-config \
-		python-docutils \
-		python-pygments \
+		python3-docutils \
+		python3-pygments \
 		python3 \
 		python3-pip \
 		python3-docutils \
 		python3-pygments \
+		python3-git \
+		python3-junitparser \
+		python3-github \
+		python3-requests \
+		python3-ply \
 		qemu-system-x86 \
 		systemd \
 		udev \
@@ -59,12 +64,10 @@ RUN apt-get update && \
 		xxd && \
 	rm -rf /var/lib/apt/lists/*
 
+RUN apt-get update && apt-get install -y locales
+
 RUN locale-gen en_US.UTF-8
 ENV LANG=en_US.UTF-8 LANGUAGE=en_US:en LC_ALL=en_US.UTF-8
-
-# Install Python3 Library
-RUN pip3 install --no-cache-dir setuptools && \
-	pip3 install --no-cache-dir gitlint gitpython junitparser pygithub requests ply
 
 RUN wget --no-verbose --no-check-certificate \
 	https://raw.githubusercontent.com/torvalds/linux/master/scripts/checkpatch.pl -P /usr/bin/ && \
