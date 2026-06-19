@@ -1,5 +1,4 @@
-
-# docker-bluez-build
+# bluez-ci-image
 
 Docker image for Bluez Build
 
@@ -19,28 +18,15 @@ docker run -ti --workdir /github/workspace -v "<local/path>":"/gihub/workspace" 
 
 ## Build for publishing
 
-Use the following command to build for publishing.
-
-```bash
-docker build . --file Dockerfile \
-               --tag blueztestbot/bluez-build:latest
-```
-
-### Publishing to Docker.io
-
-Use the following command to push the image to Docker.io for publishing.
-
-```bash
-docker login -u "<username>" -p "<passowrd>" docker.io
-docker push blueztestbot/bluez-build:<tag>
-```
+Automatically published to GitHub container registry via push on
+master, as ``ghcr.io/pv/bluez-ci-image:latest``
 
 ### Useful commands
 
 #### Pull the image from Docker.io
 
 ```bash
-docker pull blueztestbot/bluez-build:latest
+docker pull ghcr.io/pv/bluez-ci-image:latest
 ```
 
 #### Show list of images
