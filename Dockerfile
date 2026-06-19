@@ -58,6 +58,7 @@ RUN apt-get update && \
 		python3-ply \
 		qemu-system-x86 \
 		systemd \
+		systemd-dev \
 		udev \
 		valgrind \
 		wget \
