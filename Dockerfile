@@ -79,11 +79,13 @@ RUN wget --no-verbose --no-check-certificate \
 	touch /usr/bin/const_structs.checkpatch
 
 # Install Sparse tool
-RUN git clone https://git.kernel.org/pub/scm/devel/sparse/sparse.git /sparse && \
+RUN git clone --depth 1 --revision=37156835e3d725b6d750f000be33ba3814bb2310 \
+	https://git.kernel.org/pub/scm/devel/sparse/sparse.git /sparse && \
 	cd /sparse && make && make PREFIX=/usr install && rm -rf /sparse
 
 # Install smatch tool
-RUN git clone -b 1.74 https://repo.or.cz/smatch.git /smatch && \
+RUN git clone --depth 1 --revision=5e13a0ee549b29edc4fd5b92579a49acf9194b63 \
+	https://repo.or.cz/smatch.git /smatch && \
 	cd /smatch && make
 
 # Install clang
